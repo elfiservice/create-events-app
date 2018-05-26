@@ -1,0 +1,10 @@
+.new-account .content {
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 340px) {
+    .new-account .content {
+        width: 300px;
+    }
+}
+    
