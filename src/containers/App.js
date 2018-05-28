@@ -10,9 +10,7 @@ class App extends Component {
           <h1 className="App-title">Create And Schedule Your Event</h1>
           <p><i>by elfiservice</i></p>
         </header>
-        <p className="App-intro">
-          <NewAccount />
-        </p>
+        <NewAccount />
       </div>
     );
   }
