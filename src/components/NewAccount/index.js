@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import './NewAccount.css'
+import { insert } from '../../server'
 
 class NewAccount extends Component {
     render() {
+        console.log(insert);
+        insert('11', 'junior', 'elfi@elfi.com')
         return (
             <main className="new-account container">
                 <h2>Join With Us</h2>
