@@ -11,3 +11,17 @@ import { config } from "./Config"
     });
   }
 
+  export const createAccount = (dataUser) => {
+    firebase.auth()
+      .createUserWithEmailAndPassword(dataUser.email, dataUser.pass)
+      .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorMessage + ' : ' + errorCode);
+      
+      // ...
+    });
+  }
+
+
