@@ -24,4 +24,16 @@ import { config } from "./Config"
     });
   }
 
+  export const checkUserLogIn = () => {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      // User is signed in.
+      return true
+    } else {
+      // No user is signed in.
+      return false
+    }
+  }
+
 

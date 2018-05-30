@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import NewAccount from '../components/NewAccount'
+import { checkUserLogIn } from '../server'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      userLogIn: false
+    }
+  }
+
+  componentDidMount() {
+    console.log(checkUserLogIn());
+     
+  }
+
   render() {
     return (
       <div className="App">
