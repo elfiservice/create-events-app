@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './NewAccount.css'
 import { createAccount } from '../../server'
+import { Link } from 'react-router-dom'
 
 class NewAccount extends Component {
     constructor(props) {
@@ -74,6 +75,10 @@ class NewAccount extends Component {
                             className="submit btn"
                             onClick={this.createUser}
                             >Join</button>
+                        <br/>
+                        or
+                        <br/>
+                        <Link to="/login" className="login-btn btn" > Login </Link>
                     </form>
                 </section>
             </main>

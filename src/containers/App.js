@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import NewAccount from '../components/NewAccount'
 import { checkUserLogIn } from '../server'
+import { Route } from 'react-router-dom';
+import Login from '../containers/Login'
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +24,15 @@ class App extends Component {
           <h1 className="App-title">Create And Schedule Your Event</h1>
           <p><i>by elfiservice</i></p>
         </header>
-        <NewAccount />
+
+        <Route exact path={'/'} render={() => (
+          <NewAccount />
+        )} />
+
+        <Route path="/login" render={() => (
+          <Login />
+        )} />
+        
       </div>
     );
   }
