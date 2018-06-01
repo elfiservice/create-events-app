@@ -4,6 +4,7 @@ import NewAccount from '../components/NewAccount'
 import { checkUserLogIn } from '../server'
 import { Route } from 'react-router-dom';
 import Login from '../containers/Login'
+import Events from '../containers/Events'
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +32,10 @@ class App extends Component {
 
         <Route path="/login" render={() => (
           <Login />
+        )} />
+
+        <Route path="/events" render={() => (
+          <Events />
         )} />
         
       </div>

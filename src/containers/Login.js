@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { authUser } from '../server'
+import { authUser, checkUserLogIn } from '../server'
 import './Login.css'
 
 class Login extends Component {
@@ -13,6 +13,12 @@ class Login extends Component {
 
         this.makeLogin = this.makeLogin.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
+    }
+
+    componentWillMount() {
+        if(checkUserLogIn()) {
+            window.location = '/events'
+        }
     }
 
     handleInputChange(event) {
