@@ -12,15 +12,13 @@ import { config } from "./Config"
   }
 
   export const createAccount = (dataUser) => {
-    const erroMsgElement = document.getElementById('msgError');
-    erroMsgElement.innerHTML = ``;
-    erroMsgElement.classList.remove('msgError');
-    erroMsgElement.classList.remove('msgSuccess');
+    const msgElement = document.getElementById('msgError');
+    cleanErroMsg(msgElement);
     firebase.auth()
-      .createUserWithEmailAndPassword(dataUser.email, dataUser.pass).then(result => {
+      .createUserWithEmailAndPassword(dataUser.email, dataUser.pass)
+      .then(result => {
        result.displayName = dataUser.name;
-       erroMsgElement.innerHTML = `<span> Success ${result.displayName}!! Redirecting...</span>`;
-       erroMsgElement.classList.add('msgSuccess');
+        outPutSuccessMsg(msgElement, result.displayName);
         setTimeout(() => {
           window.location = '/login'
         }, 1000)
@@ -28,13 +26,32 @@ import { config } from "./Config"
       })
       .catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
+      // var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorMessage + ' : ' + errorCode);
-      erroMsgElement.innerHTML = `<span> ${errorMessage} </span>`;
-      erroMsgElement.classList.add('msgError');
+      outPutErroMsg(msgElement, errorMessage);
       // ...
     });
+  }
+
+  export const authUser = (dataUser) => {
+    const msgElement = document.getElementById('msgError');
+    cleanErroMsg(msgElement);
+    firebase.auth()
+      .signInWithEmailAndPassword(dataUser.email, dataUser.pass)
+      .then(result => {
+        result.displayName = dataUser.name;
+        outPutSuccessMsg(msgElement, result.displayName);
+        setTimeout(() => {
+          window.location = '/events'
+        }, 1000)
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        // var errorCode = error.code;
+        var errorMessage = error.message;
+        outPutErroMsg(msgElement, errorMessage);
+        // ...
+      });
   }
 
   export const checkUserLogIn = () => {
@@ -49,4 +66,18 @@ import { config } from "./Config"
     }
   }
 
+  function cleanErroMsg(erroMsgElement) {
+    erroMsgElement.innerHTML = ``;
+    erroMsgElement.classList.remove('msgError');
+    erroMsgElement.classList.remove('msgSuccess');
+  }
 
+  function outPutErroMsg(erroMsgElement, errorMessage) {
+    erroMsgElement.innerHTML = `<span> ${errorMessage} </span>`;
+    erroMsgElement.classList.add('msgError');
+  }
+
+  function outPutSuccessMsg(MsgElement, displayName) {
+    MsgElement.innerHTML = `<span> Success ${displayName}!! Redirecting...</span>`;
+    MsgElement.classList.add('msgSuccess');
+  }

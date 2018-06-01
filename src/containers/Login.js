@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { authUser } from '../server'
 import './Login.css'
 
 class Login extends Component {
@@ -26,13 +27,14 @@ class Login extends Component {
 
     makeLogin(e) {
         e.preventDefault()
-        //authUser(this.state)
+        authUser(this.state)
     }
 
     render() {
         return (
             <section className="login container">
                 <h2>You're ready to go in now....</h2>
+                <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form>
                         <input 
@@ -59,7 +61,7 @@ class Login extends Component {
                         <button 
                             type="submit" 
                             className="submit btn"
-                            onClick={this.createUser}
+                            onClick={this.makeLogin}
                             >Login</button>
                         <br/>
                         or
