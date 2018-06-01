@@ -29,14 +29,14 @@ class NewAccount extends Component {
     createUser(e) {
         e.preventDefault()
         createAccount(this.state)
-     }
+    }
 
     render() {
         return (
             <main className="new-account container">
                 <h2>Join With Us</h2>
                 <div id="msgError"></div>
-                <section className="content">
+                <section className="content center-of-screen">
                     <form>
                         <input 
                             className="input" 
