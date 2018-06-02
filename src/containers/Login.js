@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { authUser, checkUserLogIn } from '../server'
+import { Link, Redirect } from 'react-router-dom'
+import { authUser } from '../server'
 import './Login.css'
 
 class Login extends Component {
@@ -15,12 +15,6 @@ class Login extends Component {
         this.handleInputChange = this.handleInputChange.bind(this)
     }
 
-    componentWillMount() {
-        if(checkUserLogIn()) {
-            window.location = '/events'
-        }
-    }
-
     handleInputChange(event) {
         const target = event.target;
         const value = target.value;
@@ -29,14 +23,20 @@ class Login extends Component {
         this.setState({
           [name]: value
         });
-      }
+    }
 
     makeLogin(e) {
         e.preventDefault()
-        authUser(this.state)
+        authUser(this.state).then(result => {
+            console.log('user authenticated ' + result.user.email)
+        }); 
     }
 
     render() {
+        if(this.props.userStatus){
+            return <Redirect to="/events" />
+        }
+        
         return (
             <section className="login container">
                 <h2>You're ready to go in now....</h2>

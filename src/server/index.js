@@ -3,6 +3,8 @@ import { config } from "./Config"
 
   firebase.initializeApp(config);
   var database = firebase.database();
+  console.log('server');
+  
 
   export const insert = (uid, name, email) => {
     database.ref('users/' + uid).set({
@@ -36,15 +38,17 @@ import { config } from "./Config"
   export const authUser = (dataUser) => {
     const msgElement = document.getElementById('msgError');
     cleanErroMsg(msgElement);
-    firebase.auth()
+    //Criar uma PROMISE
+    return firebase.auth()
       .signInWithEmailAndPassword(dataUser.email, dataUser.pass)
-      .then(result => {
-        result.displayName = dataUser.name;
-        outPutSuccessMsg(msgElement, result.displayName);
-        setTimeout(() => {
-          window.location = '/events'
-        }, 1000)
-      })
+      .then(result => result)
+      // .then(result => {
+      //   result.displayName = dataUser.name;
+      //   outPutSuccessMsg(msgElement, result.displayName);
+      //   setTimeout(() => {
+      //     window.location = '/events'
+      //   }, 1000)
+      // })
       .catch(function(error) {
         // Handle Errors here.
         // var errorCode = error.code;
@@ -54,16 +58,8 @@ import { config } from "./Config"
       });
   }
 
-  export const checkUserLogIn = () => {
-    var user = firebase.auth().currentUser;
-
-    if (user) {
-      // User is signed in.
-      return true
-    } else {
-      // No user is signed in.
-      return false
-    }
+  export const checkUserAuth = () => {
+    return firebase.auth();
   }
 
   function cleanErroMsg(erroMsgElement) {
@@ -81,3 +77,5 @@ import { config } from "./Config"
     MsgElement.innerHTML = `<span> Success ${displayName}!! Redirecting...</span>`;
     MsgElement.classList.add('msgSuccess');
   }
+
+ 

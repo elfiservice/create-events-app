@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import NewAccount from '../components/NewAccount'
-import { checkUserLogIn } from '../server'
+import { checkUserAuth } from '../server'
 import { Route } from 'react-router-dom';
 import Login from '../containers/Login'
 import Events from '../containers/Events'
@@ -10,12 +10,21 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userLogIn: false
+      userAuthenticated: false
     }
   }
 
   componentDidMount() {
-    console.log(checkUserLogIn());
+    checkUserAuth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in..
+        this.setState({userAuthenticated : user})
+        console.log(this.state.userAuthenticated);
+      } else {
+        console.log('erro - user no Authebtucat');
+        this.setState({userAuthenticated : false})
+      }
+    })
   }
 
   render() {
@@ -27,11 +36,11 @@ class App extends Component {
         </header>
 
         <Route exact path={'/'} render={() => (
-          <NewAccount />
+          <NewAccount userStatus={this.state.userAuthenticated} />
         )} />
 
         <Route path="/login" render={() => (
-          <Login />
+          <Login userStatus={this.state.userAuthenticated} />
         )} />
 
         <Route path="/events" render={() => (
