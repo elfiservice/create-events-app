@@ -27,9 +27,14 @@ class Login extends Component {
 
     makeLogin(e) {
         e.preventDefault()
-        authUser(this.state).then(result => {
-            console.log('user authenticated ' + result.user.email)
-        }); 
+        authUser(this.state);
+        // authUser(this.state).then(result => {
+        //     console.log('user authenticated ' + result.user.email)
+        // })
+        // .catch(((error) => {
+        //     console.log('Error trying make Login : ' + error);
+            
+        // })); 
     }
 
     render() {

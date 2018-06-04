@@ -18,7 +18,10 @@ class App extends Component {
     checkUserAuth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in..
-        this.setState({userAuthenticated : user})
+        //set this time to the User has time to Read the Msg
+        setTimeout(() => {
+          this.setState({userAuthenticated : user})
+        }, 1000)
         console.log(this.state.userAuthenticated);
       } else {
         console.log('erro - user no Authebtucat');

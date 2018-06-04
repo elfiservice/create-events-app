@@ -5,22 +5,19 @@ import { signOut } from '../server'
 class Events extends Component {
 
     signOut() {
-        signOut().then(() => {
-            console.log('LogOut success!');
-        }).catch(function(error) {
-            console.log('LogOut ERROR! ' + error);
-        });
+        signOut()
     }
 
     render() {
-        if(!this.props.userStatus){
+        const { userStatus } = this.props;
+        if(!userStatus){
             return <Redirect to="/login" />
         }
 
         return (
             <section className="events container">
                 <h2>Manage your Events Here</h2>
-                <p>Hi, XXX <button className="btn" onClick={this.signOut}>Sign Out</button></p>
+                <p>Hi, {userStatus.displayName} <button className="btn" onClick={this.signOut}>Sign Out</button></p>
             </section>
         )
     }
