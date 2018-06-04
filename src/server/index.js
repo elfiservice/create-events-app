@@ -62,6 +62,10 @@ import { config } from "./Config"
     return firebase.auth();
   }
 
+  export const signOut = () => {
+    return firebase.auth().signOut();
+  }
+
   function cleanErroMsg(erroMsgElement) {
     erroMsgElement.innerHTML = ``;
     erroMsgElement.classList.remove('msgError');

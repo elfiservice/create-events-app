@@ -44,7 +44,7 @@ class App extends Component {
         )} />
 
         <Route path="/events" render={() => (
-          <Events />
+          <Events userStatus={this.state.userAuthenticated} />
         )} />
         
       </div>
