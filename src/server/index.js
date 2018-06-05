@@ -3,8 +3,6 @@ import { config } from "./Config"
 
   firebase.initializeApp(config);
   var database = firebase.database();
-  console.log('server');
-  
 
   export const insert = (uid, name, email) => {
     database.ref('users/' + uid).set({
@@ -45,8 +43,7 @@ import { config } from "./Config"
     firebase.auth()
       .signInWithEmailAndPassword(dataUser.email, dataUser.pass)
       .then(result => {
-        result.displayName = dataUser.name;
-        outPutSuccessMsg(msgElement, dataUser.name);
+        outPutSuccessMsg(msgElement, result.user.displayName);
       })
       .catch(function(error) {
         // Handle Errors here.

@@ -5,6 +5,7 @@ import { checkUserAuth } from '../server'
 import { Route } from 'react-router-dom';
 import Login from '../containers/Login'
 import Events from '../containers/Events'
+import NewEventForm from '../components/NewEventForm'
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ class App extends Component {
         setTimeout(() => {
           this.setState({userAuthenticated : user})
         }, 1000)
-        console.log(this.state.userAuthenticated);
       } else {
         console.log('erro - user no Authebtucat');
         this.setState({userAuthenticated : false})
@@ -48,6 +48,10 @@ class App extends Component {
 
         <Route path="/events" render={() => (
           <Events userStatus={this.state.userAuthenticated} />
+        )} />
+
+        <Route path="/new-event" render={() => (
+            <NewEventForm userStatus={this.state.userAuthenticated} />
         )} />
         
       </div>
