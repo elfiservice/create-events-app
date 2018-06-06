@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import TypeText from '../Inputs/TypeText'
 
 class NewEventForm extends Component {
     constructor(props) {
@@ -37,15 +38,12 @@ console.log(this.state);
                 <h2>Creating New Event...</h2>
                 <section className="content center-of-screen">
                     <form>
-                        <input 
-                            aria-label="Name of the event" 
-                            id="nameOfEvent" 
+                        <TypeText 
                             name="nameOfEvent" 
-                            type="text" 
-                            placeholder="Name of the event"
+                            placeholder="Name of the event" 
                             value={this.state.name} 
                             onChange={this.handleInputChange}
-                            required />
+                            />
                         <input 
                             aria-label="Type of the event" 
                             list="type-events" 
@@ -61,15 +59,12 @@ console.log(this.state);
                                 <option value="Conference Talk"></option>
                                 <option value="Sports Game"></option>
                             </datalist>
-                        <input 
-                            aria-label="Event host" 
-                            id="eventHost" 
+                        <TypeText 
                             name="eventHost" 
-                            type="text" 
-                            placeholder="Event host"
+                            placeholder="Event host" 
                             value={this.state.name} 
                             onChange={this.handleInputChange}
-                            required />
+                            />
                         <label htmlFor="startDateTime" className="date-time-label">Start at</label>
                         <input 
                             className="date-time-input"
