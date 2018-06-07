@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
+import './NewEventForm.css'
 
 class NewEventForm extends Component {
     constructor(props) {
@@ -10,7 +11,10 @@ class NewEventForm extends Component {
             typeEvents: '',
             eventHost: '',
             startDateTime: '',
-            endDateTime: ''
+            endDateTime: '',
+            guestList: '',
+            location: '',
+            message: ''
         }
 
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -75,13 +79,39 @@ console.log(this.state);
                             value={this.state.name} 
                             onChange={this.handleInputChange}
                             required />
-                        <label htmlFor="endDateTime" className="date-time-label">Util at</label>
+                        <label htmlFor="endDateTime" className="date-time-label">Until</label>
                         <input 
                             className="date-time-input"
                             aria-label="Event end date and time" 
                             id="endDateTime" 
                             name="endDateTime" 
                             type="datetime-local" 
+                            value={this.state.name} 
+                            onChange={this.handleInputChange}
+                            required />
+                        <label htmlFor="guestList" className="date-time-label">Your Guest List</label>
+                        <textarea 
+                            className="textarea-input"
+                            aria-label="Your Guest List" 
+                            id="guestList" 
+                            name="guestList" 
+                            placeholder="List..." 
+                            value={this.state.name} 
+                            onChange={this.handleInputChange}
+                            required />
+                        <TypeText 
+                            name="location" 
+                            placeholder="Location" 
+                            value={this.state.name} 
+                            onChange={this.handleInputChange}
+                            />
+                        <label htmlFor="message" className="date-time-label">Message to Guest List (optional)</label>
+                        <textarea 
+                            className="textarea-input"
+                            aria-label="Message to Guest List (optional)"
+                            placeholder="Message..." 
+                            id="message" 
+                            name="message" 
                             value={this.state.name} 
                             onChange={this.handleInputChange}
                             required />

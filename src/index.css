@@ -9,14 +9,27 @@ body {
   width: 90%;
 }
 
-input {
-  font-size: 18px;
-  padding: 10px 2%;
-  display: block;
+input, textarea {
   width: 96%;
+  padding: 10px 2%;
+  font-size: 18px;
+  margin: 10px auto;
+  color: #757575;
+}
+
+input {
+  display: block;
   border: none;
   border-bottom: 1px solid #757575;
-  margin: 10px auto;
+}
+
+textarea {
+  border: 1px solid #757575;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
 }
 
 .btn {
