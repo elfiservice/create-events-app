@@ -4,11 +4,14 @@ import { config } from "./Config"
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  export const insert = (uid, name, email) => {
-    database.ref('users/' + uid).set({
-      username: name,
-      email: email
-    });
+  export const insertDB = (uid, data) => {
+    var newEventKey = database.ref().child('events/' + uid).push().key;
+    return database.ref('events/' + uid + '/' + newEventKey).set(data);
+  }
+
+  export const checkNewEvent = (uid) => {
+   return database.ref('events/' + uid);
+
   }
 
   export const createAccount = (dataUser) => {

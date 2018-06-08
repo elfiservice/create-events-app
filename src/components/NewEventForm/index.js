@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
 import './NewEventForm.css'
+import { insertDB, checkNewEvent } from '../../server'
 
 class NewEventForm extends Component {
     constructor(props) {
@@ -16,8 +17,22 @@ class NewEventForm extends Component {
             location: '',
             message: ''
         }
-
+        
         this.handleInputChange = this.handleInputChange.bind(this)
+        this.createEvent = this.createEvent.bind(this)
+    }
+
+    componentDidMount() {
+        let checkEvents = checkNewEvent(this.props.userStatus.uid)
+        checkEvents.on('value', function(snapshot) {
+            //updateStarCount(postElement, snapshot.val());
+            console.log(snapshot.val());
+            
+            if(snapshot.val()) {
+                console.log('Novo Evento aDD!');
+                
+            }
+        });
     }
 
     handleInputChange(event) {
@@ -30,18 +45,28 @@ class NewEventForm extends Component {
         });
     }
 
+    createEvent(e) {
+        e.preventDefault()
+        let userID = this.props.userStatus.uid
+        insertDB(userID, this.state).then(result => {
+            console.log('Add with Success!!' + result);
+            //toDO: thow success msg and redirect to Events
+            
+        })
+    }
+
     render() {
         const { userStatus } = this.props;
         if(!userStatus){
             return <Redirect to="/login" />
         }
-console.log(this.state);
+// console.log(this.state);
 
         return (
             <section className="events container">
                 <h2>Creating New Event...</h2>
                 <section className="content center-of-screen">
-                    <form>
+                    <form onSubmit={this.createEvent}>
                         <TypeText 
                             name="nameOfEvent" 
                             placeholder="Name of the event" 
@@ -115,6 +140,11 @@ console.log(this.state);
                             value={this.state.name} 
                             onChange={this.handleInputChange}
                             required />
+                        <button 
+                            type="submit" 
+                            className="submit btn"
+                            
+                            >Create</button>
                     </form>
                 </section>    
 
