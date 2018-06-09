@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { signOut } from '../server'
 import { Link } from 'react-router-dom';
+import { checkNewEvent } from '../server'
 
 
 class Events extends Component {
 
+    componentDidMount() {
+        let checkEvents = checkNewEvent(this.props.userStatus.uid)
+        checkEvents.on('value', function(snapshot) {
+            //updateStarCount(postElement, snapshot.val());
+            console.log(snapshot.val());
+
+        });
+    }
+    
     signOut() {
         signOut()
     }

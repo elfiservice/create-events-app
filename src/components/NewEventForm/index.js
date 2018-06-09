@@ -2,37 +2,27 @@ import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
 import './NewEventForm.css'
-import { insertDB, checkNewEvent } from '../../server'
+import { insertDB } from '../../server'
 
 class NewEventForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            nameOfEvent: '',
-            typeEvents: '',
-            eventHost: '',
-            startDateTime: '',
-            endDateTime: '',
-            guestList: '',
-            location: '',
-            message: ''
+            eventForm: {
+                nameOfEvent: '',
+                typeEvents: '',
+                eventHost: '',
+                startDateTime: '',
+                endDateTime: '',
+                guestList: '',
+                location: '',
+                message: ''
+            },
+            eventCreated: false
         }
         
         this.handleInputChange = this.handleInputChange.bind(this)
         this.createEvent = this.createEvent.bind(this)
-    }
-
-    componentDidMount() {
-        let checkEvents = checkNewEvent(this.props.userStatus.uid)
-        checkEvents.on('value', function(snapshot) {
-            //updateStarCount(postElement, snapshot.val());
-            console.log(snapshot.val());
-            
-            if(snapshot.val()) {
-                console.log('Novo Evento aDD!');
-                
-            }
-        });
     }
 
     handleInputChange(event) {
@@ -40,17 +30,23 @@ class NewEventForm extends Component {
         const value = target.value;
         const name = target.name;
     
-        this.setState({
-          [name]: value
-        });
+        // nested state - https://stackoverflow.com/questions/43040721/how-to-update-a-nested-state-in-react
+        this.setState(prevState => ({
+            ...prevState,
+            eventForm: {
+                ...prevState.eventForm,
+                    [name]: value 
+                }
+            }))
     }
 
     createEvent(e) {
         e.preventDefault()
         let userID = this.props.userStatus.uid
-        insertDB(userID, this.state).then(result => {
+        insertDB(userID, this.state.eventForm).then(result => {
             console.log('Add with Success!!' + result);
             //toDO: thow success msg and redirect to Events
+            this.setState({ eventCreated : true })
             
         })
     }
@@ -60,7 +56,10 @@ class NewEventForm extends Component {
         if(!userStatus){
             return <Redirect to="/login" />
         }
-// console.log(this.state);
+
+        if(this.state.eventCreated) {
+            return <Redirect to="/events" />
+        }
 
         return (
             <section className="events container">
