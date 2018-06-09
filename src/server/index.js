@@ -1,5 +1,6 @@
 import * as firebase from "firebase";
 import { config } from "./Config"
+import * as Message from "../util/messages"
 
   firebase.initializeApp(config);
   var database = firebase.database();
@@ -16,7 +17,7 @@ import { config } from "./Config"
 
   export const createAccount = (dataUser) => {
     const msgElement = document.getElementById('msgError');
-    cleanErroMsg(msgElement);
+    Message.cleanMsgs(msgElement);
     firebase.auth()
       .createUserWithEmailAndPassword(dataUser.email, dataUser.pass)
       .then(result => {
@@ -26,7 +27,7 @@ import { config } from "./Config"
           //photoURL: "https://example.com/jane-q-user/profile.jpg"
         }).then(function() {
           // Update successful.
-          outPutSuccessMsg(msgElement, dataUser.name);
+          Message.successMsg(msgElement, dataUser.name);
         }).catch(function(error) {
           // An error happened.
           console.error('Error trying to Updating New Account : ' + error);
@@ -36,23 +37,23 @@ import { config } from "./Config"
       // Handle Errors here.
       // var errorCode = error.code;
       var errorMessage = error.message;
-      outPutErroMsg(msgElement, errorMessage);
+      Message.errorMsg(msgElement, errorMessage);
     });
   }
 
   export const authUser = (dataUser) => {
     const msgElement = document.getElementById('msgError');
-    cleanErroMsg(msgElement);
+    Message.cleanMsgs(msgElement);
     firebase.auth()
       .signInWithEmailAndPassword(dataUser.email, dataUser.pass)
       .then(result => {
-        outPutSuccessMsg(msgElement, result.user.displayName);
+        Message.successMsg(msgElement, result.user.displayName);
       })
       .catch(function(error) {
         // Handle Errors here.
         // var errorCode = error.code;
         var errorMessage = error.message;
-        outPutErroMsg(msgElement, errorMessage);
+        Message.errorMsg(msgElement, errorMessage);
       });
   }
 
@@ -67,21 +68,4 @@ import { config } from "./Config"
         console.log('LogOut ERROR! ' + error);
     });
   }
-
-  function cleanErroMsg(erroMsgElement) {
-    erroMsgElement.innerHTML = ``;
-    erroMsgElement.classList.remove('msgError');
-    erroMsgElement.classList.remove('msgSuccess');
-  }
-
-  function outPutErroMsg(erroMsgElement, errorMessage) {
-    erroMsgElement.innerHTML = `<span> ${errorMessage} </span>`;
-    erroMsgElement.classList.add('msgError');
-  }
-
-  function outPutSuccessMsg(MsgElement, displayName) {
-    MsgElement.innerHTML = `<span> Success ${displayName}!! Redirecting...</span>`;
-    MsgElement.classList.add('msgSuccess');
-  }
-
  

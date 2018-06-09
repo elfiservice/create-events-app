@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
 import './NewEventForm.css'
 import { insertDB } from '../../server'
+import * as Message from "../../util/messages"
 
 class NewEventForm extends Component {
     constructor(props) {
@@ -43,12 +44,14 @@ class NewEventForm extends Component {
     createEvent(e) {
         e.preventDefault()
         let userID = this.props.userStatus.uid
+        const msgElement = document.getElementById('msgError');
         insertDB(userID, this.state.eventForm).then(result => {
-            console.log('Add with Success!!' + result);
-            //toDO: thow success msg and redirect to Events
             this.setState({ eventCreated : true })
-            
         })
+        .catch(function(error) {
+            Message.errorMsg(msgElement, error.message)
+            setTimeout(Message.cleanMsgs(msgElement), 4000)
+        });
     }
 
     render() {
@@ -64,6 +67,7 @@ class NewEventForm extends Component {
         return (
             <section className="events container">
                 <h2>Creating New Event...</h2>
+                <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form onSubmit={this.createEvent}>
                         <TypeText 
