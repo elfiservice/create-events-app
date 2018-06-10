@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { signOut } from '../server'
-import { Link } from 'react-router-dom';
-import { checkNewEvent } from '../server'
+import { Redirect, Link } from 'react-router-dom'
+import { signOut, checkNewEvent } from '../server'
+import ListOfEvents from '../components/ListOfEvents'
 
 
 class Events extends Component {
@@ -47,9 +46,7 @@ console.log(this.state.listOfEvents);
                 <h2>Manage your Events Here</h2>
                 <p>Hi, {userStatus.displayName} <button className="btn" onClick={this.signOut}>Sign Out</button></p>
                 <Link to="/new-event" className="bkg-color-green rounded-btn" > &#9532; </Link> 
-                {this.state.listOfEvents.map((event, index) => (
-                    <li key={index}>{event.id}</li>
-                ))}
+                <ListOfEvents eventList={this.state.listOfEvents} />
             </section>
         )
     }
