@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import './ListOfEvents.css'
 
 class ListOfEvents extends Component {
     render() {
         return (
             <section className="container">
-                <table>
+                <table className="table-list">
                     <thead>
                         <tr>                    
                             <th>Event Name</th>
