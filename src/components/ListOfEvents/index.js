@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './ListOfEvents.css'
+import { Link } from 'react-router-dom'
 
 class ListOfEvents extends Component {
 
@@ -26,7 +27,7 @@ class ListOfEvents extends Component {
                     <tbody>
                     {this.props.eventList.map((event, index) => (
                         <tr key={index}>
-                            <td>{event.nameOfEvent}</td>
+                            <td><Link to={'/event/' + event.id}>{event.nameOfEvent}</Link></td>
                             <td>{this.formatDate(event.startDateTime)}</td>
                         </tr>
                     ))}

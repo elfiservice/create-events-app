@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import Login from '../containers/Login'
 import Events from '../containers/Events'
 import NewEventForm from '../components/NewEventForm'
+import Event from '../containers/Event'
 
 class App extends Component {
   constructor(props) {
@@ -52,6 +53,11 @@ class App extends Component {
 
         <Route path="/new-event" render={() => (
             <NewEventForm userStatus={this.state.userAuthenticated} />
+        )} />
+        
+        <Route path="/event/:ide" render={(dataRoute) => (
+          
+            <Event dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
         )} />
         
       </div>
