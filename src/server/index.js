@@ -68,4 +68,8 @@ import * as Message from "../util/messages"
         console.log('LogOut ERROR! ' + error);
     });
   }
+
+  export const getEvent = (userId, eventId) => {
+    return database.ref('events/' + userId + '/' + eventId).once('value')
+  }
  
