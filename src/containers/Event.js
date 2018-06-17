@@ -9,22 +9,36 @@ class Event extends Component {
         }
     }
 
-    componentWillMount() {
-        const userId = this.props.userStatus.uid
-        const eventId = this.props.dataRoute.match.params.ide
-        getEvent(userId, eventId)
-            .then((snapshot) => {
-                //console.log(snapshot.val());
-                this.setState({ event: snapshot.val() })
-            })
+    componentDidMount() {
+        this.getDataOfEvent()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userStatus !== this.props.userStatus) {
+            this.getDataOfEvent();
+          }
+    }
+
+    getDataOfEvent() {
+        if (this.props && this.props.userStatus) {
+            const userId = this.props.userStatus.uid
+            const eventId = this.props.dataRoute.match.params.ide
+            console.log(userId);
+            
+            getEvent(userId, eventId)
+                .then((snapshot) => {
+                    //console.log(snapshot.val());
+                    this.setState({ event: snapshot.val() })
+                })
+                .catch(() => {
+                    console.log('Erros trying fetch Event Data');
+                    
+                })
+        }
     }
 
     render() {
-        //console.log(this.props.dataRoute);
-        const { dataRoute } = this.props;
-        //todo: do the request to the data of Event
-        console.log(this.state.event);
-        
+
         return (
             <section>
                 <h2>{this.state.event.nameOfEvent} Event Page</h2>
