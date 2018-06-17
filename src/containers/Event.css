@@ -1,0 +1,8 @@
+.event .content {
+    text-align: left;
+}
+
+.event .box-textarea {
+    border: 1px dotted #ccc;
+    padding: 10px;
+}
