@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getEvent } from '../server'
 import '../containers/Event.css'
+import { Link } from 'react-router-dom'
 
 class Event extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class Event extends Component {
 
         return (
             <section className="container event">
-                <h2>{this.state.event.nameOfEvent} Event Page</h2>
+                <h2><i>{this.state.event.nameOfEvent}</i> Event Page</h2>
                 <div className="content">
                     <p>Type of event <b>{this.state.event.typeEvents}</b></p>
                     <p>Event host <b>{this.state.event.eventHost}</b></p>
@@ -63,6 +64,7 @@ class Event extends Component {
                         </div>
                     </p>
                 </div>
+                <Link to="/events" className="bkg-color-red rounded-btn" > &#8617; </Link>
             </section>
         )
     }
