@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getEvent } from '../server'
 import '../containers/Event.css'
 import { Link } from 'react-router-dom'
+import * as Helpers from '../util/helpers'
 
 class Event extends Component {
     constructor(props) {
@@ -50,8 +51,8 @@ class Event extends Component {
                 <div className="content">
                     <p>Type of event <b>{this.state.event.typeEvents}</b></p>
                     <p>Event host <b>{this.state.event.eventHost}</b></p>
-                    <p>Start at <b>{this.state.event.startDateTime}</b></p>
-                    <p>Until at <b>{this.state.event.endDateTime}</b></p>
+                    <p>Start at <b>{Helpers.formatDate(this.state.event.startDateTime)}</b></p>
+                    <p>Until at <b>{Helpers.formatDate(this.state.event.endDateTime)}</b></p>
                     <p>Location <b>{this.state.event.location}</b></p>
                     <p>Guest list 
                         <div className="box-textarea">

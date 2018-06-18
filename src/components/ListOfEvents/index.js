@@ -1,18 +1,9 @@
 import React, { Component } from 'react'
 import './ListOfEvents.css'
 import { Link } from 'react-router-dom'
+import * as Helpers from '../../util/helpers'
 
 class ListOfEvents extends Component {
-
-    formatDate(date) {
-        var d = new Date(date);
-        let day = d.getDate()
-        let month = d.getMonth()
-        let year = d.getFullYear()
-        let hours = d.getHours()
-        let min = d.getMinutes()
-        return `${day}/${month + 1}/${year} at ${(hours < 10 ? "0"+hours : hours)}:${(min < 10 ? "0"+min : min)}`
-    }
 
     render() {
         return (
@@ -28,7 +19,7 @@ class ListOfEvents extends Component {
                     {this.props.eventList.map((event, index) => (
                         <tr key={index}>
                             <td><Link to={'/event/' + event.id}>{event.nameOfEvent}</Link></td>
-                            <td>{this.formatDate(event.startDateTime)}</td>
+                            <td>{Helpers.formatDate(event.startDateTime)}</td>
                         </tr>
                     ))}
                     </tbody>
