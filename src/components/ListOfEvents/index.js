@@ -7,7 +7,7 @@ class ListOfEvents extends Component {
 
     render() {
         return (
-            <section className="container">
+            <section className="content">
                 <table className="table-list">
                     <thead>
                         <tr>                    
