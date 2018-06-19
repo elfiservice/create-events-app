@@ -33,20 +33,35 @@ label {
 }
 
 .btn {
-  background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
   margin: 10px 0;
   cursor: pointer;
 }
 
 .btn:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btn-cta {
+  background-color: #4CAF50;
+  padding: 15px 32px;
+  font-size: 16px;
+}
+
+.btn-singout {
+  background-color: #d8544bc0;
+  padding: 10px 22px;
+  font-size: 14px;
+}
+
+.btn-std {
+  background-color: #2a3c8fc0;
+  padding: 10px 22px;
+  font-size: 14px;
 }
 
 .bkg-color-green {

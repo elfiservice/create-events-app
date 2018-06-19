@@ -76,13 +76,13 @@ class NewAccount extends Component {
                             required />
                         <button 
                             type="submit" 
-                            className="submit btn"
+                            className="submit btn btn-cta"
                             onClick={this.createUser}
                             >Join</button>
                         <br/>
                         or
                         <br/>
-                        <Link to="/login" className="login-btn btn" > Login </Link>
+                        <Link to="/login" className="btn btn-std">Login</Link>
                     </form>
                 </section>
             </main>

@@ -43,7 +43,7 @@ class Events extends Component {
         return (
             <section className="events container">
                 <h2>Manage your Events Here</h2>
-                <p>Hi, {userStatus.displayName} <button className="btn" onClick={this.signOut}>Sign Out</button></p>
+                <p>Hi, {userStatus.displayName} <button className="btn btn-singout" onClick={this.signOut}><i class="fas fa-sign-out-alt"></i></button></p>
                 <Link to="/new-event" className="bkg-color-green rounded-btn" > &#9532; </Link> 
                 <ListOfEvents eventList={this.state.listOfEvents} />
             </section>

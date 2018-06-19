@@ -71,13 +71,13 @@ class Login extends Component {
                             required />
                         <button 
                             type="submit" 
-                            className="submit btn"
+                            className="submit btn btn-cta"
                             onClick={this.makeLogin}
                             >Login</button>
                         <br/>
                         or
                         <br/>
-                        <Link to="/" className="btn" > &#8617; </Link>
+                        <Link to="/" className="btn btn-std" > &#8617; </Link>
                     </form>
                 </section>
             </section>
