@@ -11,6 +11,10 @@
     margin: 0 auto;
 }
 
+.div-paragraph {
+    margin: 1em 0;
+}
+
 @media screen and (min-width: 555px) {
     .event .content {
         width: 500px;

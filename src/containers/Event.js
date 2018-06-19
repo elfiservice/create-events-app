@@ -54,16 +54,16 @@ class Event extends Component {
                     <p>Start at <b>{Helpers.formatDate(this.state.event.startDateTime)}</b></p>
                     <p>Until at <b>{Helpers.formatDate(this.state.event.endDateTime)}</b></p>
                     <p>Location <b>{this.state.event.location}</b></p>
-                    <p>Guest list 
+                    <div className="div-paragraph">Guest list 
                         <div className="box-textarea">
                             <b>{this.state.event.guestList}</b>
                         </div>
-                    </p>
-                    <p>Message 
+                    </div>
+                    <div className="div-paragraph">Message 
                         <div className="box-textarea">
                             <b>{this.state.event.message}</b>
                         </div>
-                    </p>
+                    </div>
                 </div>
                 <Link to="/events" className="bkg-color-red rounded-btn" > &#8617; </Link>
             </section>

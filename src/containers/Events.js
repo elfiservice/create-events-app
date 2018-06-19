@@ -39,7 +39,6 @@ class Events extends Component {
         if(!userStatus){
             return <Redirect to="/login" />
         }
-console.log(this.state.listOfEvents);
 
         return (
             <section className="events container">
