@@ -18,6 +18,18 @@
     margin: 0 auto;
 }
 
+.events .link {
+    margin-right: 10px;
+}
+
+.events .link .fa-edit {
+    color: #64bd64;
+}
+
+.events .link .fa-trash-alt {
+    color: #ff7a7a;
+}
+
 @media screen and (min-width: 555px) {
     .events .content {
         width: 500px;
