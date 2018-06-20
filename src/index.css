@@ -4,9 +4,8 @@ body {
   font-family: sans-serif;
 }
 
-.container {
-  margin: 0 auto;
-  width: 90%;
+a {
+  color: #fff;
 }
 
 input, textarea {
@@ -30,6 +29,11 @@ textarea {
 label {
   display: block;
   margin-top: 30px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
 }
 
 .btn {
