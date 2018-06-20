@@ -7,6 +7,7 @@ import Login from '../containers/Login'
 import Events from '../containers/Events'
 import NewEventForm from '../components/NewEventForm'
 import Event from '../containers/Event'
+import EditEvent from '../containers/EditEvent'
 
 class App extends Component {
   constructor(props) {
@@ -56,8 +57,11 @@ class App extends Component {
         )} />
         
         <Route path="/event/:ide" render={(dataRoute) => (
-          
             <Event dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
+        )} />
+
+        <Route path="/event-edit/:ide" render={(dataRoute) => (
+            <EditEvent dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
         )} />
         
       </div>
