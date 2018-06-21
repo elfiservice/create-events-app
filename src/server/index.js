@@ -74,8 +74,6 @@ import * as Message from "../util/messages"
   }
  
   export const putEvent = (userId, eventId, eventData) => {
-    console.log(eventId);
-    
     if(!eventId) {
       // Get a key for a new Post.
       eventId = database.ref().child('events/' + userId).push().key;

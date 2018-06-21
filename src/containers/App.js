@@ -8,6 +8,7 @@ import Events from '../containers/Events'
 import NewEventForm from '../components/NewEventForm'
 import Event from '../containers/Event'
 import EditEvent from '../containers/EditEvent'
+import NewEvent from '../containers/NewEvent'
 
 class App extends Component {
   constructor(props) {
@@ -52,8 +53,9 @@ class App extends Component {
           <Events userStatus={this.state.userAuthenticated} />
         )} />
 
-        <Route path="/new-event" render={() => (
-            <NewEventForm userStatus={this.state.userAuthenticated} />
+        <Route path="/new-event" render={(dataRoute) => (
+            // <NewEventForm userStatus={this.state.userAuthenticated} />
+            <NewEvent dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
         )} />
         
         <Route path="/event/:ide" render={(dataRoute) => (

@@ -84,6 +84,11 @@ class FormEvent extends Component {
     }
 
     render() {
+        const { userStatus } = this.props;
+        if(!userStatus){
+            return <Redirect to="/login" />
+        }
+        
         if(this.state.eventCreated) {
             return <Redirect to="/events" />
         }
