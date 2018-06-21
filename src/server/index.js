@@ -73,3 +73,17 @@ import * as Message from "../util/messages"
     return database.ref('events/' + userId + '/' + eventId).once('value')
   }
  
+  export const putEvent = (userId, eventId, eventData) => {
+    console.log(eventId);
+    
+    if(!eventId) {
+      // Get a key for a new Post.
+      eventId = database.ref().child('events/' + userId).push().key;
+    }
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    let updates = {};
+    updates['events/' + userId + '/' + eventId] = eventData;
+
+    return database.ref().update(updates);
+  }
