@@ -20,8 +20,8 @@ class ListOfEvents extends Component {
                         <tr key={index}>
                             <td>
                                 <Link className="link" to={'/event/' + event.id}>{event.nameOfEvent}</Link>
-                                <Link className="link" to={'/event-edit/' + event.id}><i class="fas fa-edit"></i></Link>
-                                <Link className="link" to={'/event-delete/' + event.id}><i class="far fa-trash-alt"></i></Link>
+                                <Link className="link" to={'/event-edit/' + event.id}><i className="fas fa-edit"></i></Link>
+                                <Link className="link" to={'/event-delete/' + event.id}><i className="far fa-trash-alt"></i></Link>
                             </td>
                             <td>{Helpers.formatDate(event.startDateTime)}</td>
                         </tr>
