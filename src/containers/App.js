@@ -5,7 +5,6 @@ import { checkUserAuth } from '../server'
 import { Route } from 'react-router-dom';
 import Login from '../containers/Login'
 import Events from '../containers/Events'
-import NewEventForm from '../components/NewEventForm'
 import Event from '../containers/Event'
 import EditEvent from '../containers/EditEvent'
 import NewEvent from '../containers/NewEvent'

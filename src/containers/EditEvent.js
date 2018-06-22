@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FormEvent from '../components/FormEvent'
 import { Link } from 'react-router-dom'
+import './EditEvent.css'
 
 class EditEvent extends Component {
     render() {

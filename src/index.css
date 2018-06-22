@@ -36,6 +36,10 @@ label {
   width: 90%;
 }
 
+.content {
+  padding-bottom: 50px;
+}
+
 .btn {
   border: none;
   color: white;
