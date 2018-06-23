@@ -6,6 +6,7 @@ body {
 
 a {
   color: #fff;
+  cursor: pointer;
 }
 
 input, textarea {
@@ -64,6 +65,12 @@ label {
   background-color: #d8544bc0;
   padding: 10px 22px;
   font-size: 14px;
+}
+
+.btn-attention {
+  background-color: #d8544bc0;
+  padding: 15px 32px;
+  font-size: 16px;
 }
 
 .btn-std {
