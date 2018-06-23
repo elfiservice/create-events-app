@@ -12,13 +12,18 @@ class ListOfEvents extends Component {
             eventId: '',
             hideModal: true
         }
+
+        this.cancelClickModal = this.cancelClickModal.bind(this)
     }
 
     deleteClick(eventId) {
-        console.log('event clicked '+ eventId);
         this.setState({ 
             eventId,
             hideModal: false })
+    }
+
+    cancelClickModal() {
+        this.setState({ hideModal: true })
     }
 
     render() {
@@ -45,7 +50,7 @@ class ListOfEvents extends Component {
                     </tbody>
                 </table>
                 <Modal hide={this.state.hideModal}>
-                    <DeleteEvent id={this.state.eventId}/>
+                    <DeleteEvent id={this.state.eventId} cancelClick={this.cancelClickModal} />
                 </Modal>
             </section>
         )
