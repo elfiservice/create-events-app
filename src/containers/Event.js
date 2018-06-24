@@ -26,7 +26,6 @@ class Event extends Component {
         if (this.props && this.props.userStatus) {
             const userId = this.props.userStatus.uid
             const eventId = this.props.dataRoute.match.params.ide
-            console.log(userId);
             
             getEvent(userId, eventId)
                 .then((snapshot) => {

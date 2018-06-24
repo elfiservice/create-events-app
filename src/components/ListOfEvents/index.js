@@ -34,6 +34,10 @@ class ListOfEvents extends Component {
             .then(() => {
                 this.setState({ hideModal: true })
             })
+            .catch(() => {
+                console.log('Erros trying remove Event in DB');
+                
+            })
     }
 
     render() {
