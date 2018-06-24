@@ -85,3 +85,7 @@ import * as Message from "../util/messages"
 
     return database.ref().update(updates);
   }
+
+  export const deleteEventDB = (userId, eventId) => {
+    return database.ref('events/' + userId + '/' + eventId).remove()
+  }

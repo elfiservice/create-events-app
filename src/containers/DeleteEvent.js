@@ -2,11 +2,9 @@ import React from 'react'
 
 export default props => (
     <div>
-        {console.log(props)
-        }
-        <h3>Are you sure to delete this event? {props.id}</h3>
+        <h3>Are you sure to delete this event?</h3>
         <p>
-            <button className="btn btn-attention">Delete</button>
+            <button className="btn btn-attention" onClick={() => props.deleteEvent(props.id)}>Delete</button>
         </p>
             or
         <p>

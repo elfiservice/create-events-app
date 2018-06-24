@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import * as Helpers from '../../util/helpers'
 import Modal from '../Modal'
 import DeleteEvent from '../../containers/DeleteEvent'
+import { deleteEventDB } from '../../server'
 
 class ListOfEvents extends Component {
     constructor(props) {
@@ -14,9 +15,10 @@ class ListOfEvents extends Component {
         }
 
         this.cancelClickModal = this.cancelClickModal.bind(this)
+        this.deleteClickModal = this.deleteClickModal.bind(this)
     }
 
-    deleteClick(eventId) {
+    deleteBtnClick(eventId) {
         this.setState({ 
             eventId,
             hideModal: false })
@@ -24,6 +26,14 @@ class ListOfEvents extends Component {
 
     cancelClickModal() {
         this.setState({ hideModal: true })
+    }
+
+    deleteClickModal(idEvent) {
+        const idUser = this.props.userStatus.uid
+        deleteEventDB(idUser, idEvent)
+            .then(() => {
+                this.setState({ hideModal: true })
+            })
     }
 
     render() {
@@ -42,7 +52,7 @@ class ListOfEvents extends Component {
                             <td>
                                 <Link className="link" to={'/event/' + event.id}>{event.nameOfEvent}</Link>
                                 <Link className="link" to={'/event-edit/' + event.id}><i className="fas fa-edit"></i></Link>
-                                <a className="link" onClick={() => this.deleteClick(event.id)}><i className="far fa-trash-alt"></i></a>
+                                <a className="link" onClick={() => this.deleteBtnClick(event.id)}><i className="far fa-trash-alt"></i></a>
                             </td>
                             <td>{Helpers.formatDate(event.startDateTime)}</td>
                         </tr>
@@ -50,7 +60,10 @@ class ListOfEvents extends Component {
                     </tbody>
                 </table>
                 <Modal hide={this.state.hideModal}>
-                    <DeleteEvent id={this.state.eventId} cancelClick={this.cancelClickModal} />
+                    <DeleteEvent 
+                        id={this.state.eventId} 
+                        cancelClick={this.cancelClickModal} 
+                        deleteEvent={this.deleteClickModal} />
                 </Modal>
             </section>
         )

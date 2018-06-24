@@ -12,7 +12,7 @@
 .modal_content {
     display: block;
     width: 540px;
-    max-width: 90%;
+    max-width: 75%;
     margin: 5% auto 0 auto;
     background: #fff;
     border-radius: 5px;
