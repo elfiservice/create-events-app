@@ -37,6 +37,13 @@ class ListOfEvents extends Component {
     }
 
     render() {
+        if(this.props.eventList.length === 0) {
+            return (
+                <section className="content">
+                    <small><i>Has no events yet. Create one now.</i></small>
+                </section>
+            )
+        }
         return (
             <section className="content">
                 <table className="table-list">
