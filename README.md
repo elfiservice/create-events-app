@@ -25,7 +25,7 @@ As I used a Firebase Database, you need to create an account there and after cre
   ```
 This `config` is used in `src/server/index.js` in the root of this App to initialize the Firebase service.
 
-After this, clone this repo in your local git clone https://github.com/elfiservice/create-events-app.git
+After this, clone this repo in your local git clone `https://github.com/elfiservice/create-events-app.git`
 
 Now into your folder project in the terminal exec `npm install` to install all dependecs
 
@@ -36,7 +36,8 @@ After just exec `npm start` to execute the App in the browser.
 - CSS
 - Javascript
 - ReactJs
-- Firebase Database Realtime
+- [Font Awesome](https://fontawesome.com/)
+- [Firebase Database Realtime](https://firebase.google.com/)
 
 ### Resouces of Suport
 - https://jaketrent.com/post/access-route-params-react-router-v4/
