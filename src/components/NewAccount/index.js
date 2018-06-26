@@ -38,7 +38,7 @@ class NewAccount extends Component {
 
         return (
             <main className="new-account container">
-                <h2>Join With Us</h2>
+                <h2 tabIndex="0">Join With Us</h2>
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form>
@@ -82,7 +82,7 @@ class NewAccount extends Component {
                         <br/>
                         or
                         <br/>
-                        <Link to="/login" className="btn btn-std">Login</Link>
+                        <Link to="/login" className="btn btn-std" role="button" aria-label="Go to make a Log in     ">Login</Link>
                     </form>
                 </section>
             </main>

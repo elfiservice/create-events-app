@@ -42,10 +42,13 @@ class Events extends Component {
 
         return (
             <section className="events container">
-                <h2>Manage your Events Here</h2>
-                <p>Hi, {userStatus.displayName} <button className="btn btn-singout" onClick={this.signOut}><i className="fas fa-sign-out-alt"></i></button></p>
-                <Link to="/new-event" className="bkg-color-green rounded-btn" > &#9532; </Link> 
+                <h2 tabIndex="0">Manage your Events Here</h2>
+                <p>Hi, {userStatus.displayName} <button className="btn btn-singout" onClick={this.signOut} aria-label="Log out button"><i className="fas fa-sign-out-alt"></i></button></p>
                 <ListOfEvents eventList={this.state.listOfEvents} userStatus={userStatus} />
+                <Link to="/new-event" 
+                    className="bkg-color-green rounded-btn"
+                    role="button"
+                    aria-label="Add new event button" > &#9532; </Link> 
             </section>
         )
     }

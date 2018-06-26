@@ -48,7 +48,8 @@ class Login extends Component {
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form>
-                        <input 
+                        <input
+                            tabIndex='1' 
                             className="input" 
                             autoComplete="email" 
                             aria-label="Email" 
@@ -77,7 +78,7 @@ class Login extends Component {
                         <br/>
                         or
                         <br/>
-                        <Link to="/" className="btn btn-std" > &#8617; </Link>
+                        <Link to="/" className="btn btn-std" role="button" aria-label="Back to create new account button" > &#8617; </Link>
                     </form>
                 </section>
             </section>

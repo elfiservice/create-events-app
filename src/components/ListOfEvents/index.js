@@ -50,22 +50,22 @@ class ListOfEvents extends Component {
         }
         return (
             <section className="content">
-                <table className="table-list">
+                <table className="table-list" >
                     <thead>
                         <tr>                    
                             <th>Event Name</th>
                             <th>Starts at</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody role="list" aria-label="List of events">
                     {this.props.eventList.map((event, index) => (
-                        <tr key={index}>
+                        <tr key={index} role="listitem">
                             <td>
-                                <Link className="link" to={'/event/' + event.id}>{event.nameOfEvent}</Link>
-                                <Link className="link" to={'/event-edit/' + event.id}><i className="fas fa-edit"></i></Link>
-                                <a className="link" onClick={() => this.deleteBtnClick(event.id)}><i className="far fa-trash-alt"></i></a>
+                                <Link className="link" to={'/event/' + event.id} aria-label={event.nameOfEvent + " event"}>{event.nameOfEvent}</Link>
+                                <Link className="link" to={'/event-edit/' + event.id} role="button" aria-label="Edit event"><i className="fas fa-edit"></i></Link>
+                                <a className="link" onClick={() => this.deleteBtnClick(event.id)} role="button" aria-label="Delete event" tabIndex="0"><i className="far fa-trash-alt"></i></a>
                             </td>
-                            <td>{Helpers.formatDate(event.startDateTime)}</td>
+                            <td tabIndex="0" aria-label={"Event starts at " + event.startDateTime}>{Helpers.formatDate(event.startDateTime)}</td>
                         </tr>
                     ))}
                     </tbody>
