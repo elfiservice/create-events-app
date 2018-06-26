@@ -19,6 +19,7 @@ class ListOfEvents extends Component {
     }
 
     deleteBtnClick(eventId) {
+        // document.querySelector('.events').setAttribute('aria-hidden', true)    
         this.setState({ 
             eventId,
             hideModal: false })

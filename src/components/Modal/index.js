@@ -11,8 +11,8 @@ class Modal extends Component {
         }
 
         return (
-            <div className="modal_window">
-                <article className="modal_content">
+            <div className="modal_window" >
+                <article className="modal_content" role="dialog">
                     {this.props.children}
                 </article>
             </div>
