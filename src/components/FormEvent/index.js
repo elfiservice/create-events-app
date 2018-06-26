@@ -104,7 +104,7 @@ class FormEvent extends Component {
                     onChange={this.handleInputChange}
                     />
                 <input 
-                    aria-label="Type of the event" 
+                    aria-label="Type of the event list or enter yours" 
                     list="type-events" 
                     id="typeEvents"
                     name="typeEvents"

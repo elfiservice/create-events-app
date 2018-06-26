@@ -6,9 +6,11 @@ class NewEvent extends Component {
     render() {
         return (
             <section className="container edit-event">
-                <h2>Creating New Event...</h2>
+                <h2 tabIndex="0">Creating New Event...</h2>
                 <FormEvent userStatus={this.props.userStatus} dataRoute={this.props.dataRoute} />
-                <Link to="/events" className="bkg-color-red rounded-btn" > &#8617; </Link>
+                <Link to="/events" className="bkg-color-red rounded-btn"
+                    role="button"
+                    aria-label="Back to the list of events" > &#8617; </Link>
             </section>
         )
     }
