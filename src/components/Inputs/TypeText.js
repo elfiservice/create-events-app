@@ -1,7 +1,6 @@
 import React from 'react'
 
-const TypeText = (props) => {
-    return (
+const TypeText = (props) => (
         <input 
         aria-label={props.placeholder} 
         id={props.name} 
@@ -10,8 +9,9 @@ const TypeText = (props) => {
         placeholder={props.placeholder}
         value={props.value}
         onChange={props.onChange}
-        required />
+        required={props.required}
+        autoFocus={props.autofocus}
+         />
     )
-}
 
 export default TypeText

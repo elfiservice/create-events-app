@@ -102,6 +102,8 @@ class FormEvent extends Component {
                     placeholder="Name of the event" 
                     value={this.state.eventForm.nameOfEvent} 
                     onChange={this.handleInputChange}
+                    required={true}
+                    autofocus={true}
                     />
                 <input 
                     aria-label="Type of the event list or enter yours" 
@@ -123,6 +125,7 @@ class FormEvent extends Component {
                     placeholder="Event host" 
                     value={this.state.eventForm.eventHost} 
                     onChange={this.handleInputChange}
+                    required={true}
                     />
                 <label htmlFor="startDateTime" className="date-time-label">Start at</label>
                 <input 
@@ -159,6 +162,7 @@ class FormEvent extends Component {
                     placeholder="Location" 
                     value={this.state.eventForm.location} 
                     onChange={this.handleInputChange}
+                    required={true}
                     />
                 <label htmlFor="message" className="date-time-label">Message to Guest List (optional)</label>
                 <textarea 
