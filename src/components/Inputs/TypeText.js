@@ -11,6 +11,7 @@ const TypeText = (props) => (
         onChange={props.onChange}
         required={props.required}
         autoFocus={props.autofocus}
+        autoComplete={props.name}
          />
     )
 

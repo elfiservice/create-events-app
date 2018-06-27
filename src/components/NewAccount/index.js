@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './NewAccount.css'
 import { createAccount } from '../../server'
 import { Link, Redirect } from 'react-router-dom'
+import TypeText from '../Inputs/TypeText'
 
 class NewAccount extends Component {
     constructor(props) {
@@ -42,28 +43,21 @@ class NewAccount extends Component {
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form>
-                        <input 
-                            className="input" 
-                            autoComplete="name" 
-                            aria-label="Name" 
-                            id="name" 
-                            name="name" 
-                            type="text" 
-                            placeholder="Name"
+                        <TypeText
+                            name="name"
+                            placeholder="Your name"
                             value={this.state.name} 
                             onChange={this.handleInputChange}
-                            required />
-                        <input 
-                            className="input" 
-                            autoComplete="email" 
-                            aria-label="Email" 
-                            id="email" 
-                            name="email" 
-                            type="email" 
-                            placeholder="Email" 
+                            required={true}
+                            autofocus={true}
+                            />
+                        <TypeText
+                            name="email"
+                            placeholder="Your email"
                             value={this.state.email} 
                             onChange={this.handleInputChange}
-                            required />
+                            required={true}
+                            />
                         <input 
                             className="input" 
                             aria-label="Password" 
