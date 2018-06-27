@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TypeText from '../Inputs/TypeText'
+import TypeDataList from '../Inputs/TypeDataList'
 import { getEvent, putEvent } from '../../server'
 import * as Message from "../../util/messages"
 import { Redirect } from 'react-router-dom'
@@ -105,21 +106,14 @@ class FormEvent extends Component {
                     required={true}
                     autofocus={true}
                     />
-                <input 
-                    aria-label="Type of the event list or enter yours" 
-                    list="type-events" 
-                    id="typeEvents"
+                <TypeDataList
                     name="typeEvents"
-                    placeholder="Type of the event"
+                    placeholder="Type of the event list or enter yours"
                     value={this.state.eventForm.typeEvents} 
                     onChange={this.handleInputChange}
-                    required />
-                    <datalist id="type-events">
-                        <option value="Party"></option>
-                        <option value="Meeting"></option>
-                        <option value="Conference Talk"></option>
-                        <option value="Sports Game"></option>
-                    </datalist>
+                    required={true}
+                    dataList={["Party","Meeting","Conference Talk","Sports Game"]}
+                />
                 <TypeText 
                     name="eventHost" 
                     placeholder="Event host" 
