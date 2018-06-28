@@ -52,22 +52,21 @@ class NewAccount extends Component {
                             autofocus={true}
                             />
                         <TypeText
+                            type="email"
                             name="email"
                             placeholder="Your email"
                             value={this.state.email} 
                             onChange={this.handleInputChange}
                             required={true}
                             />
-                        <input 
-                            className="input" 
-                            aria-label="Password" 
-                            id="pass" 
-                            type="password" 
-                            name="pass" 
-                            placeholder="Password" 
+                        <TypeText
+                            type="password"
+                            name="pass"
+                            placeholder="Your Password"
                             value={this.state.pass} 
                             onChange={this.handleInputChange}
-                            required />
+                            required={true}
+                            />
                         <button 
                             type="submit" 
                             className="submit btn btn-cta"

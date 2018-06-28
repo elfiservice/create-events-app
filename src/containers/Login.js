@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { authUser } from '../server'
 import './Login.css'
+import TypeText from '../components/Inputs/TypeText'
 
 class Login extends Component {
     constructor(props) {
@@ -48,28 +49,23 @@ class Login extends Component {
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
                     <form>
-                        <input
-                            tabIndex='1' 
-                            className="input" 
-                            autoComplete="email" 
-                            aria-label="Email" 
-                            id="email" 
-                            name="email" 
-                            type="email" 
-                            placeholder="Email" 
+                        <TypeText
+                            type="email"
+                            name="email"
+                            placeholder="Your email"
                             value={this.state.email} 
                             onChange={this.handleInputChange}
-                            required />
-                        <input 
-                            className="input" 
-                            aria-label="Password" 
-                            id="pass" 
-                            type="password" 
-                            name="pass" 
-                            placeholder="Password" 
+                            required={true}
+                            autofocus={true}
+                            />
+                        <TypeText
+                            type="password"
+                            name="pass"
+                            placeholder="Your Password"
                             value={this.state.pass} 
                             onChange={this.handleInputChange}
-                            required />
+                            required={true}
+                            />
                         <button 
                             type="submit" 
                             className="submit btn btn-cta"
