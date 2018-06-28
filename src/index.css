@@ -10,7 +10,7 @@ a {
 }
 
 input, textarea {
-  width: 96%;
+  width: 95%;
   padding: 10px 2%;
   font-size: 18px;
   margin: 10px auto;
@@ -25,6 +25,7 @@ input {
 
 textarea {
   border: 1px solid #757575;
+  margin-top: 30px;
 }
 
 label {

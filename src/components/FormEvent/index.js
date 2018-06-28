@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import TypeText from '../Inputs/TypeText'
 import TypeDataList from '../Inputs/TypeDataList'
+import TypeTextarea from '../Inputs/TypeTextarea'
+import TypeDatetime from '../Inputs/TypeDatetime'
 import { getEvent, putEvent } from '../../server'
 import * as Message from "../../util/messages"
 import { Redirect } from 'react-router-dom'
@@ -122,35 +124,28 @@ class FormEvent extends Component {
                     required={true}
                     />
                 <label htmlFor="startDateTime" className="date-time-label">Start at</label>
-                <input 
-                    className="date-time-input"
-                    aria-label="Event start date and time" 
-                    id="startDateTime" 
-                    name="startDateTime" 
-                    type="datetime-local" 
+                <TypeDatetime
+                    label="Event start date and time"
+                    name="startDateTime"
                     value={this.state.eventForm.startDateTime} 
                     onChange={this.handleInputChange}
-                    required />
+                    required={true}
+                    />
                 <label htmlFor="endDateTime" className="date-time-label">Until</label>
-                <input 
-                    className="date-time-input"
-                    aria-label="Event end date and time" 
-                    id="endDateTime" 
-                    name="endDateTime" 
-                    type="datetime-local" 
+                <TypeDatetime
+                    label="Event end date and time"
+                    name="endDateTime"
                     value={this.state.eventForm.endDateTime} 
                     onChange={this.handleInputChange}
-                    required />
-                <label htmlFor="guestList" className="date-time-label">Your Guest List</label>
-                <textarea 
-                    className="textarea-input"
-                    aria-label="Your Guest List" 
-                    id="guestList" 
-                    name="guestList" 
-                    placeholder="List..." 
+                    required={true}
+                    />
+                <TypeTextarea
+                    name="guestList"
+                    placeholder="Your Guest List"
                     value={this.state.eventForm.guestList} 
                     onChange={this.handleInputChange}
-                    required />
+                    required={true}
+                    />
                 <TypeText 
                     name="location" 
                     placeholder="Location" 
@@ -158,16 +153,12 @@ class FormEvent extends Component {
                     onChange={this.handleInputChange}
                     required={true}
                     />
-                <label htmlFor="message" className="date-time-label">Message to Guest List (optional)</label>
-                <textarea 
-                    className="textarea-input"
-                    aria-label="Message to Guest List (optional)"
-                    placeholder="Message..." 
-                    id="message" 
-                    name="message" 
+                <TypeTextarea
+                    name="message"
+                    placeholder="Message to Guest List (optional)"
                     value={this.state.eventForm.message} 
                     onChange={this.handleInputChange}
-                    required />
+                    />
                 <button 
                     type="submit" 
                     className="submit btn btn-cta">Save</button>
