@@ -119,3 +119,7 @@ label {
   border-radius: 50%;
   z-index: 20;
 }
+
+.loader-gif {
+  display: none;
+}

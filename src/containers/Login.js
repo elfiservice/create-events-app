@@ -4,6 +4,7 @@ import { authUser } from '../server'
 import './Login.css'
 import TypeText from '../components/Inputs/TypeText'
 import * as Message from '../util/messages'
+import { toggleBtnLoader } from '../util/helpers'
 
 class Login extends Component {
     constructor(props) {
@@ -32,16 +33,18 @@ class Login extends Component {
         const msgElement = document.getElementById('msgError');
         Message.cleanMsgs(msgElement);
         const submitBtn = document.querySelector('.submit')
-
+        toggleBtnLoader(submitBtn)
         authUser(this.state)
             .then(result => {
                 Message.successMsg(msgElement, result.user.displayName);
+                toggleBtnLoader(submitBtn)
             })
             .catch(function(error) {
                 // Handle Errors here.
                 // var errorCode = error.code;
                 var errorMessage = error.message;
                 Message.errorMsg(msgElement, errorMessage);
+                toggleBtnLoader(submitBtn)
             })
     }
 
@@ -78,6 +81,7 @@ class Login extends Component {
                             className="submit btn btn-cta"
                             onClick={this.makeLogin}
                             >Login</button>
+                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" /></div>
                         <br/>
                         or
                         <br/>
