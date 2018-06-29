@@ -42,19 +42,7 @@ import * as Message from "../util/messages"
   }
 
   export const authUser = (dataUser) => {
-    const msgElement = document.getElementById('msgError');
-    Message.cleanMsgs(msgElement);
-    firebase.auth()
-      .signInWithEmailAndPassword(dataUser.email, dataUser.pass)
-      .then(result => {
-        Message.successMsg(msgElement, result.user.displayName);
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        // var errorCode = error.code;
-        var errorMessage = error.message;
-        Message.errorMsg(msgElement, errorMessage);
-      });
+    return firebase.auth().signInWithEmailAndPassword(dataUser.email, dataUser.pass)
   }
 
   export const checkUserAuth = () => {

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { authUser } from '../server'
 import './Login.css'
 import TypeText from '../components/Inputs/TypeText'
+import * as Message from '../util/messages'
 
 class Login extends Component {
     constructor(props) {
@@ -28,14 +29,20 @@ class Login extends Component {
 
     makeLogin(e) {
         e.preventDefault()
-        authUser(this.state);
-        // authUser(this.state).then(result => {
-        //     console.log('user authenticated ' + result.user.email)
-        // })
-        // .catch(((error) => {
-        //     console.log('Error trying make Login : ' + error);
-            
-        // })); 
+        const msgElement = document.getElementById('msgError');
+        Message.cleanMsgs(msgElement);
+        const submitBtn = document.querySelector('.submit')
+
+        authUser(this.state)
+            .then(result => {
+                Message.successMsg(msgElement, result.user.displayName);
+            })
+            .catch(function(error) {
+                // Handle Errors here.
+                // var errorCode = error.code;
+                var errorMessage = error.message;
+                Message.errorMsg(msgElement, errorMessage);
+            })
     }
 
     render() {
