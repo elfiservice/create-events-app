@@ -1,6 +1,5 @@
 import * as firebase from "firebase";
 import { config } from "./Config"
-import * as Message from "../util/messages"
 
   firebase.initializeApp(config);
   var database = firebase.database();
@@ -16,29 +15,7 @@ import * as Message from "../util/messages"
   }
 
   export const createAccount = (dataUser) => {
-    const msgElement = document.getElementById('msgError');
-    Message.cleanMsgs(msgElement);
-    firebase.auth()
-      .createUserWithEmailAndPassword(dataUser.email, dataUser.pass)
-      .then(result => {
-        let user = result.user;
-        user.updateProfile({
-          displayName: dataUser.name
-          //photoURL: "https://example.com/jane-q-user/profile.jpg"
-        }).then(function() {
-          // Update successful.
-          Message.successMsg(msgElement, dataUser.name);
-        }).catch(function(error) {
-          // An error happened.
-          console.error('Error trying to Updating New Account : ' + error);
-        });
-      })
-      .catch(function(error) {
-      // Handle Errors here.
-      // var errorCode = error.code;
-      var errorMessage = error.message;
-      Message.errorMsg(msgElement, errorMessage);
-    });
+    return firebase.auth().createUserWithEmailAndPassword(dataUser.email, dataUser.pass)
   }
 
   export const authUser = (dataUser) => {

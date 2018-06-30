@@ -3,6 +3,8 @@ import './NewAccount.css'
 import { createAccount } from '../../server'
 import { Link, Redirect } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
+import * as Message from '../../util/messages'
+import { toggleBtnLoader } from '../../util/helpers'
 
 class NewAccount extends Component {
     constructor(props) {
@@ -29,7 +31,29 @@ class NewAccount extends Component {
 
     createUser(e) {
         e.preventDefault()
-        createAccount(this.state)
+        const msgElement = document.getElementById('msgError');
+        Message.cleanMsgs(msgElement);
+        const submitBtn = document.querySelector('.submit')
+        toggleBtnLoader(submitBtn)
+        const dataUser = this.state
+        createAccount(dataUser)
+            .then(result => {
+                let user = result.user;
+                user.updateProfile({ displayName: dataUser.name })
+                    .then(function() {
+                        Message.successMsg(msgElement, dataUser.name);
+                        toggleBtnLoader(submitBtn)
+                    })
+                    .catch(function(error) {
+                        console.error('Error trying to Updating New Account : ' + error);
+                        toggleBtnLoader(submitBtn)
+                    });
+            })
+            .catch(function(error) {
+                Message.errorMsg(msgElement, error.message);
+                console.log(error.code);
+                toggleBtnLoader(submitBtn)
+            });
     }
 
     render() {
@@ -42,7 +66,7 @@ class NewAccount extends Component {
                 <h2 tabIndex="0">Join With Us</h2>
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
-                    <form>
+                    <form onSubmit={this.createUser}>
                         <TypeText
                             name="name"
                             placeholder="Your name"
@@ -70,8 +94,8 @@ class NewAccount extends Component {
                         <button 
                             type="submit" 
                             className="submit btn btn-cta"
-                            onClick={this.createUser}
                             >Join</button>
+                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" /></div>
                         <br/>
                         or
                         <br/>
