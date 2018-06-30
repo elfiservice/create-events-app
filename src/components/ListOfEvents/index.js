@@ -31,17 +31,22 @@ class ListOfEvents extends Component {
 
     deleteClickModal(idEvent) {
         const idUser = this.props.userStatus.uid
+        const submitBtn = document.querySelector('.delete-btn')
+        Helpers.toggleBtnLoader(submitBtn)
         deleteEventDB(idUser, idEvent)
             .then(() => {
                 this.setState({ hideModal: true })
+                Helpers.toggleBtnLoader(submitBtn)
             })
             .catch(() => {
                 console.log('Erros trying remove Event in DB');
-                
+                Helpers.toggleBtnLoader(submitBtn)            
             })
     }
 
     render() {
+        console.log(this.props.eventList.length);
+        
         if(this.props.eventList.length === 0) {
             return (
                 <section className="content">

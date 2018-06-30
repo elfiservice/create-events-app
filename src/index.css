@@ -33,6 +33,10 @@ label {
   margin-top: 30px;
 }
 
+.text-center {
+  text-align:  center;
+}
+
 .container {
   margin: 0 auto;
   width: 90%;
@@ -123,3 +127,4 @@ label {
 .loader-gif {
   display: none;
 }
+
