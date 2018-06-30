@@ -15,24 +15,25 @@ class Events extends Component {
     componentDidMount() {
         let checkEvents = checkNewEvent(this.props.userStatus.uid)
         checkEvents.on('value', (snapshot) => {
-
+            let array = [];
             if(snapshot.val() != null) {
                 const listOfEvents = snapshot.val()
-                let array = [];
                 for (var key in listOfEvents) {
-
                     listOfEvents[key].id = key;
                     array.push(listOfEvents[key])
                   }
-
-                this.setState({ listOfEvents : array })
             }
+            this.setState({ listOfEvents : array })
         });
     }
     
     signOut() {
         signOut()
     }
+
+    // updateListOfEvents() {
+
+    // }
 
     render() {
         const { userStatus } = this.props;
