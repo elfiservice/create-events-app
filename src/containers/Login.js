@@ -81,7 +81,7 @@ class Login extends Component {
                             className="submit btn btn-cta"
                             onClick={this.makeLogin}
                             >Login</button>
-                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" /></div>
+                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt=""/></div>
                         <br/>
                         or
                         <br/>

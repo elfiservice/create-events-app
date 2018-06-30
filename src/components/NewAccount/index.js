@@ -95,7 +95,7 @@ class NewAccount extends Component {
                             type="submit" 
                             className="submit btn btn-cta"
                             >Join</button>
-                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" /></div>
+                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt="" /></div>
                         <br/>
                         or
                         <br/>

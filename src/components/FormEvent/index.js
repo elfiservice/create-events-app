@@ -6,6 +6,7 @@ import TypeDatetime from '../Inputs/TypeDatetime'
 import { getEvent, putEvent } from '../../server'
 import * as Message from "../../util/messages"
 import { Redirect } from 'react-router-dom'
+import { toggleBtnLoader } from '../../util/helpers'
 
 class FormEvent extends Component {
     constructor(props) {
@@ -39,13 +40,13 @@ class FormEvent extends Component {
     }
 
     getDataOfEvent() {
+        //ckeck if exist a ID of event in the URL (to fill the fields when Editing )
         if (this.props && this.props.userStatus && this.props.dataRoute.match.params.ide) {
             const userId = this.props.userStatus.uid
             const eventId = this.props.dataRoute.match.params.ide
             
             getEvent(userId, eventId)
                 .then((snapshot) => {
-                    //console.log(snapshot.val());
                     this.setState({ eventForm: snapshot.val() })
                 })
                 .catch(() => {
@@ -75,15 +76,19 @@ class FormEvent extends Component {
         let userID = this.props.userStatus.uid
         const eventId = this.props.dataRoute.match.params.ide
         const msgElement = document.getElementById('msgError');
-        // console.log('submite Form !', userID)
+        const submitBtn = document.querySelector('.submit')
+        toggleBtnLoader(submitBtn)
 
-        putEvent(userID, eventId, this.state.eventForm).then(result => {
-            this.setState({ eventCreated : true })
-        })
-        .catch(function(error) {
-            Message.errorMsg(msgElement, error.message)
-            setTimeout(Message.cleanMsgs(msgElement), 4000)
-        });
+        putEvent(userID, eventId, this.state.eventForm)
+            .then(result => {
+                this.setState({ eventCreated : true })
+                toggleBtnLoader(submitBtn)
+            })
+            .catch(function(error) {
+                Message.errorMsg(msgElement, error.message)
+                toggleBtnLoader(submitBtn)
+                setTimeout(Message.cleanMsgs(msgElement), 4000)
+            });
     }
 
     render() {
@@ -162,6 +167,7 @@ class FormEvent extends Component {
                 <button 
                     type="submit" 
                     className="submit btn btn-cta">Save</button>
+                <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt=""/></div>
             </form>
         </section>   
         )
