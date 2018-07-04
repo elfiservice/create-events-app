@@ -5,6 +5,7 @@ import './Login.css'
 import TypeText from '../components/Inputs/TypeText'
 import * as Message from '../util/messages'
 import { toggleBtnLoader } from '../util/helpers'
+import LoaderGif from '../components/LoaderGif'
 
 class Login extends Component {
     constructor(props) {
@@ -81,7 +82,7 @@ class Login extends Component {
                             className="submit btn btn-cta"
                             onClick={this.makeLogin}
                             >Login</button>
-                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt=""/></div>
+                        <LoaderGif />
                         <br/>
                         or
                         <br/>

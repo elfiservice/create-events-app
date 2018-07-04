@@ -7,6 +7,7 @@ import { getEvent, putEvent } from '../../server'
 import * as Message from "../../util/messages"
 import { Redirect } from 'react-router-dom'
 import { toggleBtnLoader } from '../../util/helpers'
+import LoaderGif from '../LoaderGif'
 
 class FormEvent extends Component {
     constructor(props) {
@@ -167,7 +168,7 @@ class FormEvent extends Component {
                 <button 
                     type="submit" 
                     className="submit btn btn-cta">Save</button>
-                <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt=""/></div>
+                <LoaderGif />
             </form>
         </section>   
         )

@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom'
 import TypeText from '../Inputs/TypeText'
 import * as Message from '../../util/messages'
 import { toggleBtnLoader } from '../../util/helpers'
+import LoaderGif from '../LoaderGif'
 
 class NewAccount extends Component {
     constructor(props) {
@@ -95,7 +96,7 @@ class NewAccount extends Component {
                             type="submit" 
                             className="submit btn btn-cta"
                             >Join</button>
-                        <div className="loader-gif"><img width="20%" src="../assets/images/loader.gif" alt="" /></div>
+                        <LoaderGif />
                         <br/>
                         or
                         <br/>
