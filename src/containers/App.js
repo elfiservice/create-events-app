@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import NewAccount from '../components/NewAccount'
+import React, { Component } from 'react'
+import './App.css'
 import { checkUserAuth } from '../server'
-import { Route } from 'react-router-dom';
-import Login from '../containers/Login'
-import Events from '../containers/Events'
-import Event from '../containers/Event'
-import EditEvent from '../containers/EditEvent'
-import NewEvent from '../containers/NewEvent'
+
+import Routes from '../main/routes'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -45,37 +40,11 @@ class App extends Component {
           <h1 className="App-title">Create And Schedule Your Event</h1>
           <p><i>by elfiservice</i></p>
         </header>
-
-        <Route exact path={'/'} render={() => (
-          <NewAccount  />
-        )} />
-
-        <Route path="/login" render={() => (
-          <Login  />
-        )} />
-
-        <Route path="/events" render={() => (
-          <Events  />
-        )} />
-
-        <Route path="/new-event" render={(dataRoute) => (
-            // <NewEventForm userStatus={this.state.userAuthenticated} />
-            <NewEvent dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
-        )} />
-        
-        <Route path="/event/:ide" render={(dataRoute) => (
-            <Event dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
-        )} />
-
-        <Route path="/event-edit/:ide" render={(dataRoute) => (
-            <EditEvent dataRoute={dataRoute} userStatus={this.state.userAuthenticated} />
-        )} />
-        
+        <Routes />
       </div>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ checkAuth }, dispatch)
-
 export default connect(null, mapDispatchToProps)(App);

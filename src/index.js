@@ -12,6 +12,6 @@ import reducers from './main/reducers'
 const store = createStore(reducers)
 
 ReactDOM.render(
-    <Provider store={store}><BrowserRouter basename={process.env.PUBLIC_URL} ><App /></BrowserRouter></Provider>,
+    <Provider store={store}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();

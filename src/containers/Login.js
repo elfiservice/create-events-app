@@ -52,8 +52,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.props.userStatus);
-        
         if(this.props.userStatus){
             return <Redirect to="/events" />
         }

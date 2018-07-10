@@ -3,6 +3,7 @@ import { getEvent } from '../server'
 import '../containers/Event.css'
 import { Link } from 'react-router-dom'
 import * as Helpers from '../util/helpers'
+import { connect } from 'react-redux'
 
 class Event extends Component {
     constructor(props) {
@@ -72,4 +73,5 @@ class Event extends Component {
     }
 }
 
-export default Event
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+export default connect(mapStateToProps)(Event)
