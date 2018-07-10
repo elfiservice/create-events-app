@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 import { signOut, checkNewEvent } from '../server'
 import ListOfEvents from '../components/ListOfEvents'
 
+import { connect } from 'react-redux'
 
 class Events extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class Events extends Component {
     }
 
     componentDidMount() {
+      
         let checkEvents = checkNewEvent(this.props.userStatus.uid)
         checkEvents.on('value', (snapshot) => {
             let array = [];
@@ -30,10 +32,6 @@ class Events extends Component {
     signOut() {
         signOut()
     }
-
-    // updateListOfEvents() {
-
-    // }
 
     render() {
         const { userStatus } = this.props;
@@ -55,4 +53,5 @@ class Events extends Component {
     }
 }
 
-export default Events
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+export default connect(mapStateToProps)(Events)

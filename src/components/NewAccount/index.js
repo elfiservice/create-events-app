@@ -7,6 +7,8 @@ import * as Message from '../../util/messages'
 import { toggleBtnLoader } from '../../util/helpers'
 import LoaderGif from '../LoaderGif'
 
+import { connect } from 'react-redux'
+
 class NewAccount extends Component {
     constructor(props) {
         super(props)
@@ -58,6 +60,8 @@ class NewAccount extends Component {
     }
 
     render() {
+        console.log(this.props.userStatus);
+        
         if(this.props.userStatus){
             return <Redirect to="/events" />
         }
@@ -108,4 +112,6 @@ class NewAccount extends Component {
     }
 }
 
-export default NewAccount;
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+
+export default connect(mapStateToProps)(NewAccount)

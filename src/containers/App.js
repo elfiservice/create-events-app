@@ -9,6 +9,10 @@ import Event from '../containers/Event'
 import EditEvent from '../containers/EditEvent'
 import NewEvent from '../containers/NewEvent'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { checkAuth } from './appActions'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -23,11 +27,13 @@ class App extends Component {
         // User is signed in..
         //set this time to the User has time to Read the Msg
         setTimeout(() => {
-          this.setState({userAuthenticated : user})
+          this.props.checkAuth(user)
+          //this.setState({userAuthenticated : user})
         }, 1000)
       } else {
         console.log('erro - user not Authenticaded');
-        this.setState({userAuthenticated : false})
+        this.props.checkAuth(false)
+        //this.setState({userAuthenticated : false})
       }
     })
   }
@@ -41,15 +47,15 @@ class App extends Component {
         </header>
 
         <Route exact path={'/'} render={() => (
-          <NewAccount userStatus={this.state.userAuthenticated} />
+          <NewAccount  />
         )} />
 
         <Route path="/login" render={() => (
-          <Login userStatus={this.state.userAuthenticated} />
+          <Login  />
         )} />
 
         <Route path="/events" render={() => (
-          <Events userStatus={this.state.userAuthenticated} />
+          <Events  />
         )} />
 
         <Route path="/new-event" render={(dataRoute) => (
@@ -70,4 +76,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({ checkAuth }, dispatch)
+
+export default connect(null, mapDispatchToProps)(App);
