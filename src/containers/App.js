@@ -26,7 +26,7 @@ class App extends Component {
           this.setState({userAuthenticated : user})
         }, 1000)
       } else {
-        console.log('erro - user no Authebtucat');
+        console.log('erro - user not Authenticaded');
         this.setState({userAuthenticated : false})
       }
     })
