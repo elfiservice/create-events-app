@@ -12,9 +12,11 @@ class Events extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let checkEvents = checkNewEvent(this.props.userStatus.uid)
         checkEvents.on('value', (snapshot) => {
+            console.log(snapshot.val());
+            //toDo: usar Redux para armazenar listOfEvents e levar esse value Event para o compt App
             let array = [];
             if(snapshot.val() != null) {
                 const listOfEvents = snapshot.val()
@@ -22,8 +24,9 @@ class Events extends Component {
                     listOfEvents[key].id = key;
                     array.push(listOfEvents[key])
                   }
+                this.setState({ listOfEvents : array })
             }
-            this.setState({ listOfEvents : array })
+            
         });
     }
     

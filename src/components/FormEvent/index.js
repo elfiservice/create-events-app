@@ -32,10 +32,10 @@ class FormEvent extends Component {
 
     componentWillMount() {
         this.getDataOfEvent()
-    }
+     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.userStatus !== this.props.userStatus) {
+        if (prevProps.userStatus !== this.props.userStatus && !this.state.eventCreated) {
             this.getDataOfEvent()
           }
     }
