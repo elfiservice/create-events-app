@@ -14,20 +14,24 @@ class Events extends Component {
     }
 
     componentDidMount() {
-        let checkEvents = checkNewEvent(this.props.userStatus.uid)
-        checkEvents.on('value', (snapshot) => {
-            let array = [];
-            if(snapshot.val() != null) {
-                const listOfEvents = snapshot.val()
-                for (var key in listOfEvents) {
-                    listOfEvents[key].id = key;
-                    array.push(listOfEvents[key])
-                  }
-            }
-            this.setState({ listOfEvents : array })
-        });
+        checkNewEvent(this.props.userStatus.uid)
+            .on('value', (snapshot) => {
+                let array = [];
+                if(snapshot.val() != null) {
+                    const listOfEvents = snapshot.val()
+                    for (var key in listOfEvents) {
+                        listOfEvents[key].id = key;
+                        array.push(listOfEvents[key])
+                    }
+                }
+                this.setState({ listOfEvents : array })
+            });
     }
     
+    componentWillUnmount() {
+        checkNewEvent(this.props.userStatus.uid).off()
+    }
+
     signOut() {
         signOut()
     }
