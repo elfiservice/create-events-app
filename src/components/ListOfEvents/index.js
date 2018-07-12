@@ -45,8 +45,6 @@ class ListOfEvents extends Component {
     }
 
     render() {
-        console.log(this.props.eventList.length);
-        
         if(this.props.eventList.length === 0) {
             return (
                 <section className="content">
