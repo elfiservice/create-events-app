@@ -20,7 +20,7 @@ class Events extends Component {
                         array.push(listOfEvents[key])
                     }
                 }
-                // this.setState({ listOfEvents : array })
+                // toDo: fazer o getList fazer o Fetch dentro dele sem passar Array por aqui
                 this.props.getList(array)
             });
     }

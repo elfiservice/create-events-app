@@ -9,26 +9,17 @@ import { connect } from 'react-redux'
 import { checkAuth } from './appActions'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userAuthenticated: false
-    }
-  }
 
   componentDidMount() {
     checkUserAuth().onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in..
         //set this time to the User has time to Read the Msg
         setTimeout(() => {
           this.props.checkAuth(user)
-          //this.setState({userAuthenticated : user})
         }, 1000)
       } else {
         console.log('erro - user not Authenticaded');
         this.props.checkAuth(false)
-        //this.setState({userAuthenticated : false})
       }
     })
   }
