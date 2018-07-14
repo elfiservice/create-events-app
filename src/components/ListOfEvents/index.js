@@ -3,7 +3,7 @@ import './ListOfEvents.css'
 import { Link } from 'react-router-dom'
 import * as Helpers from '../../util/helpers'
 import Modal from '../Modal'
-import DeleteEvent from '../../containers/DeleteEvent'
+import DeleteEvent from '../../containers/ModalContent/DeleteEvent'
 import { deleteEventDB } from '../../server'
 
 class ListOfEvents extends Component {
