@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { getEvent } from '../server'
-import '../containers/Event.css'
+import { getEvent } from '../../server'
+import './Event.css'
 import { Link } from 'react-router-dom'
-import * as Helpers from '../util/helpers'
+import * as Helpers from '../../util/helpers'
 import { connect } from 'react-redux'
 
 class Event extends Component {

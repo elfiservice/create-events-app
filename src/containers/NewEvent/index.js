@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import FormEvent from '../components/FormEvent'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import FormEvent from '../../components/FormEvent'
 
 class NewEvent extends Component {
     render() {
