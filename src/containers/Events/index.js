@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom'
-import { signOut, checkNewEvent } from '../server'
-import ListOfEvents from '../components/ListOfEvents'
+import { signOut, checkNewEvent } from '../../server'
+import ListOfEvents from '../../components/ListOfEvents'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getList } from '../containers/eventsAcitons'
+import { getList } from './eventsAcitons'
 
 class Events extends Component {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import NewAccount from '../components/NewAccount'
+import NewAccount from '../containers/NewAccount'
 import Login from '../containers/Login'
 import Events from '../containers/Events'
 import Event from '../containers/Event'

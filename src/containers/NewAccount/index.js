@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import './NewAccount.css'
 import { createAccount } from '../../server'
 import { Link, Redirect } from 'react-router-dom'
-import TypeText from '../Inputs/TypeText'
+import TypeText from '../../components/Inputs/TypeText'
 import * as Message from '../../util/messages'
 import { toggleBtnLoader } from '../../util/helpers'
-import LoaderGif from '../LoaderGif'
+import LoaderGif from '../../components/LoaderGif'
 
 import { connect } from 'react-redux'
 
