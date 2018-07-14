@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
-import { checkUserAuth } from '../server'
+import { checkUserAuth } from '../../server'
 
-import Routes from '../main/routes'
+import Routes from '../routes'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'

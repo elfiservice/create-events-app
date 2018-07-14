@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import checkAuthReducer from '../containers/appReducer'
+import checkAuthReducer from '../main/App/appReducer'
 import eventsList from '../containers/eventsReducer'
 
 const rootReducers = combineReducers({
