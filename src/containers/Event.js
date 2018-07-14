@@ -41,9 +41,9 @@ class Event extends Component {
     }
 
     render() {
-        if (!this.props.userStatus) {
-            return <div>Loading...</div>
-          }
+        if (!this.props.userStatus || !this.state.event.nameOfEvent) {
+            return <div><p>Loading...</p></div>
+        }
 
         return (
             <section className="container event">
