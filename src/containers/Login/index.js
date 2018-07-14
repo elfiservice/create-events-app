@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { authUser } from '../server'
+import { authUser } from '../../server'
 import './Login.css'
-import TypeText from '../components/Inputs/TypeText'
-import * as Message from '../util/messages'
-import { toggleBtnLoader } from '../util/helpers'
-import LoaderGif from '../components/LoaderGif'
+import TypeText from '../../components/Inputs/TypeText'
+import * as Message from '../../util/messages'
+import { toggleBtnLoader } from '../../util/helpers'
+import LoaderGif from '../../components/LoaderGif'
 
 import { connect } from 'react-redux'
 
