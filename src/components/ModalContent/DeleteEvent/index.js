@@ -1,5 +1,5 @@
 import React from 'react'
-import LoaderGif from '../components/LoaderGif'
+import LoaderGif from '../../../components/LoaderGif'
 
 export default props => (
     <div tabIndex="1" className="text-center">

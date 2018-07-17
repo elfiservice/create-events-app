@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { getEvent } from '../server'
-import '../containers/Event.css'
-import { Link } from 'react-router-dom'
-import * as Helpers from '../util/helpers'
+import { getEvent } from '../../../server'
+import './Event.css'
+import * as Helpers from '../../../util/helpers'
+import { connect } from 'react-redux'
 
 class Event extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class Event extends Component {
     getDataOfEvent() {
         if (this.props && this.props.userStatus) {
             const userId = this.props.userStatus.uid
-            const eventId = this.props.dataRoute.match.params.ide
+            const eventId = this.props.id
             
             getEvent(userId, eventId)
                 .then((snapshot) => {
@@ -40,9 +40,9 @@ class Event extends Component {
     }
 
     render() {
-        if (!this.props.userStatus) {
-            return <div>Loading...</div>
-          }
+        if (!this.props.userStatus || !this.state.event.nameOfEvent) {
+            return <div><p>Loading...</p></div>
+        }
 
         return (
             <section className="container event">
@@ -64,12 +64,13 @@ class Event extends Component {
                         </div>
                     </div>
                 </div>
-                <Link to="/events" className="bkg-color-red rounded-btn"
-                    role="button"
-                    aria-label="Back to events list"> &#8617; </Link>
+
+                <button tabIndex="3" className="btn btn-std" onClick={this.props.cancelClick}>Close</button>
+
             </section>
         )
     }
 }
 
-export default Event
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+export default connect(mapStateToProps)(Event)

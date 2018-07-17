@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import './NewAccount.css'
-import { createAccount } from '../../server'
 import { Link, Redirect } from 'react-router-dom'
-import TypeText from '../Inputs/TypeText'
+import { authUser } from '../../server'
+import './Login.css'
+import TypeText from '../../components/Inputs/TypeText'
 import * as Message from '../../util/messages'
 import { toggleBtnLoader } from '../../util/helpers'
-import LoaderGif from '../LoaderGif'
+import LoaderGif from '../../components/LoaderGif'
 
-class NewAccount extends Component {
+import { connect } from 'react-redux'
+
+class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
             email: '',
             pass: ''
         }
 
-        this.createUser = this.createUser.bind(this)
+        this.makeLogin = this.makeLogin.bind(this)
         this.handleInputChange = this.handleInputChange.bind(this)
     }
 
@@ -28,54 +29,39 @@ class NewAccount extends Component {
         this.setState({
           [name]: value
         });
-      }
+    }
 
-    createUser(e) {
+    makeLogin(e) {
         e.preventDefault()
         const msgElement = document.getElementById('msgError');
         Message.cleanMsgs(msgElement);
         const submitBtn = document.querySelector('.submit')
         toggleBtnLoader(submitBtn)
-        const dataUser = this.state
-        createAccount(dataUser)
+        authUser(this.state)
             .then(result => {
-                let user = result.user;
-                user.updateProfile({ displayName: dataUser.name })
-                    .then(function() {
-                        Message.successMsg(msgElement, dataUser.name);
-                        toggleBtnLoader(submitBtn)
-                    })
-                    .catch(function(error) {
-                        console.error('Error trying to Updating New Account : ' + error);
-                        toggleBtnLoader(submitBtn)
-                    });
+                Message.successMsg(msgElement, result.user.displayName);
+                toggleBtnLoader(submitBtn)
             })
             .catch(function(error) {
-                Message.errorMsg(msgElement, error.message);
-                console.log(error.code);
+                // Handle Errors here.
+                // var errorCode = error.code;
+                var errorMessage = error.message;
+                Message.errorMsg(msgElement, errorMessage);
                 toggleBtnLoader(submitBtn)
-            });
+            })
     }
 
     render() {
         if(this.props.userStatus){
             return <Redirect to="/events" />
         }
-
+        
         return (
-            <main className="new-account container">
-                <h2 tabIndex="0">Join With Us</h2>
+            <section className="login container">
+                <h2>You're ready to go in now....</h2>
                 <div id="msgError"></div>
                 <section className="content center-of-screen">
-                    <form onSubmit={this.createUser}>
-                        <TypeText
-                            name="name"
-                            placeholder="Your name"
-                            value={this.state.name} 
-                            onChange={this.handleInputChange}
-                            required={true}
-                            autofocus={true}
-                            />
+                    <form>
                         <TypeText
                             type="email"
                             name="email"
@@ -83,6 +69,7 @@ class NewAccount extends Component {
                             value={this.state.email} 
                             onChange={this.handleInputChange}
                             required={true}
+                            autofocus={true}
                             />
                         <TypeText
                             type="password"
@@ -95,17 +82,19 @@ class NewAccount extends Component {
                         <button 
                             type="submit" 
                             className="submit btn btn-cta"
-                            >Join</button>
+                            onClick={this.makeLogin}
+                            >Login</button>
                         <LoaderGif />
                         <br/>
                         or
                         <br/>
-                        <Link to="/login" className="btn btn-std" role="button" aria-label="Go to make a Log in     ">Login</Link>
+                        <Link to="/" className="btn btn-std" role="button" aria-label="Back to create new account button" > &#8617; </Link>
                     </form>
                 </section>
-            </main>
+            </section>
         )
     }
 }
 
-export default NewAccount;
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+export default connect(mapStateToProps)(Login)

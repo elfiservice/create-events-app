@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import FormEvent from '../components/FormEvent'
 import { Link } from 'react-router-dom'
 import './EditEvent.css'
+import { connect } from 'react-redux'
+import FormEvent from '../../components/FormEvent'
 
 class EditEvent extends Component {
     render() {
@@ -15,4 +16,5 @@ class EditEvent extends Component {
     }
 }
 
-export default EditEvent
+const mapStateToProps = state => ({ userStatus: state.userStatus.userAuthenticated })
+export default connect(mapStateToProps)(EditEvent)
