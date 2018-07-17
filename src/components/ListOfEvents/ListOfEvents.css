@@ -20,6 +20,7 @@
 
 .events .link {
     margin-right: 10px;
+    text-decoration: underline;
 }
 
 .events .link .fa-edit {
