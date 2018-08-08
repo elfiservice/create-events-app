@@ -55,7 +55,7 @@ class Login extends Component {
         if(this.props.userStatus){
             return <Redirect to="/events" />
         }
-        
+
         return (
             <section className="login container">
                 <h2>You're ready to go in now....</h2>
